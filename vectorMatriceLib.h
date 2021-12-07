@@ -1,6 +1,6 @@
 /*
   -----------------------------------------------------------------------------------
-  Fichier     : main.cpp
+  Fichier     : vectoMatriceLib.h
   Nom du labo : Labo07 Matrice
   Auteur(s)   : Théo Pilet & Anthony Christen (Groupe B)
   Date        : 07.12.2021
@@ -12,14 +12,7 @@
   -----------------------------------------------------------------------------------
 */
 
-#include <iostream>           // Input/Output de base.
-#include <cstdlib>            // EXIT_SUCCESS;
-#include "vectorMatriceLib.h"
+#ifndef LABO07MATRICE_VECTORMATRICELIB_H
+#define LABO07MATRICE_VECTORMATRICELIB_H
 
-using namespace std;
-
-int main() {
-
-
-   return EXIT_SUCCESS;
-}
+#endif //LABO07MATRICE_VECTORMATRICELIB_H
