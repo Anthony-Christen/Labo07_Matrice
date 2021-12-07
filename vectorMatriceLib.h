@@ -15,4 +15,14 @@
 #ifndef LABO07MATRICE_VECTORMATRICELIB_H
 #define LABO07MATRICE_VECTORMATRICELIB_H
 
+//-----------------------------------------------------------------------------------
+// 2) Opérateur<<
+//-----------------------------------------------------------------------------------
+// But        Affiche une Matrice au format [(..),(..),(..)]
+// @param     matrice  à afficher
+// Return     n/a
+// Exception  n/a
+
+
 #endif //LABO07MATRICE_VECTORMATRICELIB_H
+
