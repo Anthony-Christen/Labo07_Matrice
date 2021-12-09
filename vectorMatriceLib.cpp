@@ -23,9 +23,9 @@ ostream& operator<< (ostream& out, const vecteur& v) {
    if (!v.empty()) {
       for (vecteur::const_iterator i = v.cbegin(); i != v.cend(); ++i) {
          if (i != v.cbegin()) {
-            cout << ", ";
+            out << ", ";
          }
-         cout << *i;
+         out << *i;
       }
    }
    out << ')';
