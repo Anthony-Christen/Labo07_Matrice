@@ -15,14 +15,28 @@
 #ifndef LABO07MATRICE_VECTORMATRICELIB_H
 #define LABO07MATRICE_VECTORMATRICELIB_H
 
+#include <iostream>
+#include <vector>
+
+//-----------------------------------------------------------------------------------
+// 1) Opérateur<<
+//-----------------------------------------------------------------------------------
+// But        Afficher un vecteur au format (v1, v2, …, vn)
+// @param     out  flux de sortie
+// @param     v    vecteur à afficher
+// Return     flux de sortie
+// Exception  n/a
+std::ostream& operator<< (std::ostream& out, const std::vector<int>& v);
+
 //-----------------------------------------------------------------------------------
 // 2) Opérateur<<
 //-----------------------------------------------------------------------------------
-// But        Affiche une Matrice au format [(..),(..),(..)]
-// @param     matrice  à afficher
-// Return     n/a
+// But        Afficher une Matrice au format [(..),(..),(..)]
+// @param     out  flux de sortie
+// @param     m    matrice à afficher
+// Return     flux de sortie
 // Exception  n/a
-
+std::ostream& operator<< (std::ostream& out, const std::vector<std::vector<int>>& m);
 
 #endif //LABO07MATRICE_VECTORMATRICELIB_H
 

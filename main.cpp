@@ -17,8 +17,25 @@
 #include "vectorMatriceLib.h"
 
 using namespace std;
+using vecteur = vector<int>;
+using matrice = vector<vecteur>;
 
 int main() {
+   //--------------------------------------------------------------------------------
+   // Constantes
+   //--------------------------------------------------------------------------------
+
+   //--------------------------------------------------------------------------------
+   // Démonstartion du fonctionnement de la librairie
+   //--------------------------------------------------------------------------------
+      // 1) Operateur<< (vecteur)
+      vecteur v = {1, 2, 3, 4, 5};
+      cout << "1) Operateur<< (vecteur) : " << v << endl << endl;
+
+      // 2) Operateur<< (matrice)
+      matrice m = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+      cout << "2) Operateur<< (matrice) : " << m << endl << endl;
+
 
 
    return EXIT_SUCCESS;

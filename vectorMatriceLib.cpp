@@ -13,21 +13,37 @@
 */
 
 #include "vectorMatriceLib.h" // Lien vers le fichier d'en-tête.
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 using vecteur = vector<int>;
-using matrice = vecteur<vecteur>;
+using matrice = vector<vecteur>;
+
+ostream& operator<< (ostream& out, const vecteur& v) {
+   out << '(';
+   if (!v.empty()) {
+      for (vecteur::const_iterator i = v.cbegin(); i != v.cend(); ++i) {
+         if (i != v.cbegin()) {
+            cout << ", ";
+         }
+         cout << *i;
+      }
+   }
+   out << ')';
+
+   return out;
+}
 
 ostream& operator<< (ostream& out, const matrice& m) {
    out << '[';
    if (!m.empty()) {
-      for_each(m.begin(), m.end(), afficher)
+      for (matrice::const_iterator i = m.cbegin(); i != m.cend(); ++i) {
+         if (i != m.cbegin()) {
+            cout << ", ";
+         }
+         out << *i;
+      }
    }
    out << ']';
-}
 
-void afficher(const vecteur& v) {
-   cout << v;
+   return out;
 }
