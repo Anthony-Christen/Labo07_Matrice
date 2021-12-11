@@ -38,5 +38,42 @@ std::ostream& operator<< (std::ostream& out, const std::vector<int>& v);
 // Exception  n/a
 std::ostream& operator<< (std::ostream& out, const std::vector<std::vector<int>>& m);
 
+//-----------------------------------------------------------------------------------
+// 3) estCarre
+//-----------------------------------------------------------------------------------
+// But        Vérifie si la matrice mise en parametre est carrée
+// @param     m     matrice à vérifier
+// Return     Validation matrice carré/non-carré
+// Exception  n/a
+bool estCarre (const std::vector<std::vector<int>>& m);
+
+
+//-----------------------------------------------------------------------------------
+// 5) minCol
+//-----------------------------------------------------------------------------------
+// But        Renvoie la taille du plus petit vecteur de la matrice mise en parametre
+// \param     m            matrice à vérifier
+// Return     elementMin   taille minimun des vecteurs de la matrice
+// Exception  n/a
+size_t minCol(const std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 7) sommeColonne
+//-----------------------------------------------------------------------------------
+// But        Renvoie le nombre le chaque élément de chaque colonne
+// @param     m   matrice à vérifier
+// Return     v   vecteur contenant tous les tailles des colonnes
+// Exception  n/a
+std::vector<int> sommeColonne(const std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 9) shuffleMatrice
+//-----------------------------------------------------------------------------------
+// But        Mélange la positions des vecteurs de la matrice mise en parametre.
+// @param     m   matrice à vérifier
+// Return     m   matrice shuffle
+// Exception  n/a
+std::vector<std::vector<int>> shuffleMatrice(std::vector<std::vector<int>> m);
+
 #endif //LABO07MATRICE_VECTORMATRICELIB_H
 

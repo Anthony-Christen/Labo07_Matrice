@@ -25,6 +25,7 @@ int main() {
    // Constantes
    //--------------------------------------------------------------------------------
 
+
    //--------------------------------------------------------------------------------
    // Démonstartion du fonctionnement de la librairie
    //--------------------------------------------------------------------------------
@@ -33,8 +34,22 @@ int main() {
       cout << "1) Operateur<< (vecteur) : " << v << endl << endl;
 
       // 2) Operateur<< (matrice)
-      matrice m = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+      matrice m = {{1, 2}, {4, 5, 6, 3, 4}, {7, 8, 9}};
       cout << "2) Operateur<< (matrice) : " << m << endl << endl;
+
+      // 3) estCarre
+      // cout << "3) La matrice mise est carree : "
+      //      << boolalpha << estCarre(m) << endl << endl;
+
+      // 5) minCol
+      cout << "5) Taille du plus petit vecteur : "   << minCol(m) << endl << endl;
+
+      // 7) minCol
+      cout << "7) Sommes des colonnes : " << sommeColonne(m) << endl << endl;
+
+      // 9) shuffleMatrice
+      cout << "9) shuffleMatrice : " << shuffleMatrice(m) << endl << endl;
+
 
 
 
