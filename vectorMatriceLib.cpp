@@ -13,6 +13,7 @@
 */
 
 #include "vectorMatriceLib.h" // Lien vers le fichier d'en-tête.
+#include <numeric>
 
 using namespace std;
 using vecteur = vector<int>;
@@ -46,4 +47,53 @@ ostream& operator<< (ostream& out, const matrice& m) {
    out << ']';
 
    return out;
+}
+
+bool sontEgaux(const vecteur& v, const vecteur& v1) {
+   return v == v1;
+}
+
+bool estReguliere(const matrice& m) {
+   bool reguliere = true;
+   if (!m.empty()) {
+      reguliere = equal(m.cbegin(), m.cend() - 1, m.cbegin() + 1, sontEgaux);
+   }
+
+   return reguliere;
+}
+
+int somme(const vecteur& v) {
+   return accumulate(v.cbegin(), v.cend(), 0);
+}
+
+vecteur sommeLigne(const matrice& m) {
+   vecteur v(m.size());
+
+   transform(m.cbegin(), m.cend(), v.begin(), somme);
+
+   return v;
+}
+
+std::vector<int> vectSommeMin(const matrice& m) {
+   // Vecteur contennant les sommes de chacune des lignes de la matrice m
+   vecteur vSommes = sommeLigne(m);
+
+   // Récupération de l'itérateur de la somme la plus petite
+   auto sommeMin = min_element(vSommes.cbegin(), vSommes.cend());
+
+   // Récupérationn de l'index du vecteur ayant la somme la plus petite
+   int position = distance(vSommes.cbegin(), sommeMin);
+
+   // Retourne la vecteur ayant la somme la plus petite
+   return m.at(position);
+}
+
+void trierVecteur(vecteur& v) {
+   sort(v.begin(), v.end());
+}
+
+void sortMatrice(matrice& m) {
+   for_each(m.begin(), m.end(), trierVecteur);
+
+   sort(m.begin(), m.end());
 }
