@@ -4,16 +4,20 @@
   Nom du labo : Labo07 Matrice
   Auteur(s)   : Théo Pilet & Anthony Christen (Groupe B)
   Date        : 07.12.2021
-  But         : le but du programme et non le but du laboratoire !!
+  But         : Librairie contenant des fonctions utilisable sur des vecteurs et des
+                matrices
 
-  Remarque(s) : à compléter
+  Remarque(s) : /
 
   Compilateur : Apple clang version 13.0.0 (clang-1300.0.29.3)
   -----------------------------------------------------------------------------------
 */
-
+#include <algorithm>          // equal(), transform(), min_element(), max_element(),
+                              // distance(), forach(), shuffle(), sort()
+#include <numeric>            // accumulate()
+#include <random>             // default_random_engine()
+#include <chrono>             // chrono::system_clock::now().time_since_epoch().count()
 #include "vectorMatriceLib.h" // Lien vers le fichier d'en-tête.
-#include <numeric>
 
 using namespace std;
 using vecteur = vector<int>;
@@ -49,17 +53,35 @@ ostream& operator<< (ostream& out, const matrice& m) {
    return out;
 }
 
-bool sontEgaux(const vecteur& v, const vecteur& v1) {
-   return v == v1;
+bool estCarre (const matrice& m){
+   if (estReguliere(m)) {
+      return m.size() == m[0].size(); // nb de lignes == nb de colones
+   }
+   return false;
+}
+
+bool memeTaille(const vecteur& v, const vecteur& v1) {
+   return v.size() == v1.size();
 }
 
 bool estReguliere(const matrice& m) {
    bool reguliere = true;
    if (!m.empty()) {
-      reguliere = equal(m.cbegin(), m.cend() - 1, m.cbegin() + 1, sontEgaux);
+      reguliere = equal(m.cbegin(), m.cend() - 1, m.cbegin() + 1, memeTaille);
    }
 
    return reguliere;
+}
+
+size_t remplissage(const vecteur& v){
+   return v.size();
+}
+
+size_t minCol(const matrice& m) {
+   vecteur v(m.size());
+   transform(m.cbegin(), m.cend(), v.begin(), remplissage);
+   auto elementMin = min_element(v.cbegin(), v.cend());
+   return *elementMin;
 }
 
 int somme(const vecteur& v) {
@@ -74,7 +96,31 @@ vecteur sommeLigne(const matrice& m) {
    return v;
 }
 
-std::vector<int> vectSommeMin(const matrice& m) {
+vecteur sommeColonne(const matrice& m){
+   vecteur vTailles(m.size());
+   transform(m.cbegin(), m.cend(), vTailles.begin(), remplissage);
+   int nbCol = *max_element(vTailles.cbegin(), vTailles.cend());
+
+   vecteur resultat;
+   int col = 0;
+
+   while(col < nbCol) {
+      int somme = 0;
+      for(size_t i = 0; i < m.size(); ++i) {
+         vecteur vCourant = m.at(i);
+         if (col < vCourant.size()) {
+            for (size_t j = col; j < col + 1; ++j) {
+               somme += vCourant.at(j);
+            }
+         }
+      }
+      resultat.push_back(somme);
+      ++col;
+   }
+   return resultat;
+}
+
+vecteur vectSommeMin(const matrice& m) {
    // Vecteur contennant les sommes de chacune des lignes de la matrice m
    vecteur vSommes = sommeLigne(m);
 
@@ -86,6 +132,11 @@ std::vector<int> vectSommeMin(const matrice& m) {
 
    // Retourne la vecteur ayant la somme la plus petite
    return m.at(position);
+}
+
+void shuffleMatrice(matrice& m){
+   unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+   shuffle(m.begin(), m.end(), default_random_engine(seed));
 }
 
 void trierVecteur(vecteur& v) {

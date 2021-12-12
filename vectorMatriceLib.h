@@ -4,9 +4,10 @@
   Nom du labo : Labo07 Matrice
   Auteur(s)   : Théo Pilet & Anthony Christen (Groupe B)
   Date        : 07.12.2021
-  But         : le but du programme et non le but du laboratoire !!
+  But         : Librairie contenant des fonctions utilisable sur des vecteurs et des
+                matrices
 
-  Remarque(s) : à compléter
+  Remarque(s) : /
 
   Compilateur : Apple clang version 13.0.0 (clang-1300.0.29.3)
   -----------------------------------------------------------------------------------
@@ -38,14 +39,31 @@ std::ostream& operator<< (std::ostream& out, const std::vector<int>& v);
 // Exception  n/a
 std::ostream& operator<< (std::ostream& out, const std::vector<std::vector<int>>& m);
 
+// 3) Fonction estCarre
 //-----------------------------------------------------------------------------------
-// 3) Fonction estReguliere()
+// But        Vérifie si la matrice mise en parametre est carrée
+// @param     m     matrice à vérifier
+// Return     Validation matrice carré/non-carré
+// Exception  n/a
+bool estCarre (const std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 4) Fonction estReguliere()
 //-----------------------------------------------------------------------------------
 // But        Tester si la matrice est régulière (toutes les lignes de même taille)
 // @param     m  matrice à tester
 // Return     booléen indiquant si la matrice est régulière ou non
 // Exception  n/a
 bool estReguliere(const std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 5) Fonction minCol
+//-----------------------------------------------------------------------------------
+// But        Renvoie la taille du plus petit vecteur de la matrice mise en parametre
+// \param     m            matrice à vérifier
+// Return     taille minimun des vecteurs de la matrice
+// Exception  n/a
+size_t minCol(const std::vector<std::vector<int>>& m);
 
 //-----------------------------------------------------------------------------------
 // 6) Fonction sommeLigne()
@@ -57,7 +75,16 @@ bool estReguliere(const std::vector<std::vector<int>>& m);
 std::vector<int> sommeLigne(const std::vector<std::vector<int>>& m);
 
 //-----------------------------------------------------------------------------------
-// 7) Fonction vectSommeMin()
+// 7) Fonction sommeColonne
+//-----------------------------------------------------------------------------------
+// But        Renvoie la somme des éléments de chaque colonne de la matrice
+// @param     m   matrice à vérifier
+// Return     vecteur contenant les somme de chacune des lignes
+// Exception  n/a
+std::vector<int> sommeColonne(const std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 8) Fonction vectSommeMin()
 //-----------------------------------------------------------------------------------
 // But        Trouver le vecteur d'une matrice dont la somme des valeurs est la
 //            plus faible
@@ -67,7 +94,16 @@ std::vector<int> sommeLigne(const std::vector<std::vector<int>>& m);
 std::vector<int> vectSommeMin(const std::vector<std::vector<int>>& m);
 
 //-----------------------------------------------------------------------------------
-// 10) sortMatrice()
+// 9) Fonction shuffleMatrice
+//-----------------------------------------------------------------------------------
+// But        Mélange la positions des vecteurs de la matrice mise en parametre.
+// @param     m   matrice à vérifier
+// Return     n/a
+// Exception  n/a
+void shuffleMatrice(std::vector<std::vector<int>>& m);
+
+//-----------------------------------------------------------------------------------
+// 10) Fonction sortMatrice()
 //-----------------------------------------------------------------------------------
 // But        Trier dans l’ordre croissant une matrice en fonction de l’élément
 //            minimum d’un vecteur
